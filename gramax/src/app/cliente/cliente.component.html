@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo y Título -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="assets/logo.png" alt="Logo" class="logo me-2" />
+      <span class="navbar-title">Servicios Gramax</span>
+    </a>
+
+    <!-- Botón para el menú colapsable -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Botones de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="mx-auto d-flex gap-3">
+        <button class="btn btn-primary" (click)="navigateTo('cliente')">Inicio</button>
+        <button class="btn btn-secondary" (click)="navigateTo('servicios')">Servicios</button>
+       
+      </div>
+    </div>
+
+    <!-- Saludo al cliente -->
+    <div class="navbar-text text-white me-3 text-center greeting">
+      <span class="fw-bold">Bienvenido,</span>
+      <span
+        class="text-capitalize"
+        *ngIf="userData && userData.correo_electronico"
+        >{{ userData.correo_electronico.split('@')[0] }}</span
+      >
+    </div>
+
+    <!-- Botón de cierre de sesión -->
+    <button class="btn btn-danger btn-sm" (click)="logout()">Cerrar Sesión</button>
+  </div>
+</nav>
+
+<div class="background-gradient d-flex justify-content-center align-items-center vh-100">
+  <div class="card gradient-card shadow-lg" style="width: 30rem;">
+    <div class="card-header text-center">
+      <h3>Detalles del Cliente</h3>
+      <button
+        class="btn btn-primary btn-sm float-end"
+        (click)="generatePDF()"
+        title="Imprimir"
+      >
+        <i class="bi bi-printer"></i> Imprimir
+      </button>
+    </div>
+    <div class="card-body">
+      <div *ngIf="loading">
+        <p>Cargando datos del cliente...</p>
+      </div>
+      <div *ngIf="!loading && userData">
+        <p><strong>Correo Electrónico:</strong> {{ userData.correo_electronico }}</p>
+        <p><strong>Contraseña Correo:</strong> {{ userData.contrasena_original }}</p>
+        <p><strong>Correo SAT:</strong> {{ userData.correo_sat }}</p>
+        <p><strong>DPI:</strong> {{ userData.dpi }}</p>
+        <p><strong>Contraseña SAT:</strong> {{ userData.contrasena_sat }}</p>
+      </div>
+      <div *ngIf="!loading && !userData">
+        <p>No se encontraron datos para el cliente.</p>
+      </div>
+    </div>
+  </div>
+</div>

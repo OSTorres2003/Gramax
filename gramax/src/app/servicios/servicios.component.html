@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo y Título -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="assets/logo.png" alt="Logo" class="logo me-2" />
+      <span class="navbar-title">Servicios Gramax</span>
+    </a>
+
+    <!-- Botón para el menú colapsable -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Botones de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="mx-auto d-flex gap-3">
+        <button class="btn btn-primary" (click)="navigateTo('cliente')">Inicio</button>
+        <button class="btn btn-secondary" (click)="navigateTo('servicios')">Servicios</button>
+       
+      </div>
+    </div>
+
+    <!-- Saludo al cliente -->
+    <div class="navbar-text text-white me-3 text-center greeting">
+      <span class="fw-bold">Bienvenido,</span>
+      <span
+        class="text-capitalize"
+        *ngIf="userData && userData.correo_electronico"
+        >{{ userData.correo_electronico.split('@')[0] }}</span
+      >
+    </div>
+
+    <!-- Botón de cierre de sesión -->
+    <button class="btn btn-danger btn-sm" (click)="logout()">Cerrar Sesión</button>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="background-gradient d-flex flex-column align-items-center py-5">
+  <h1 class="text-white my-4">Nuestros Servicios</h1>
+  <div class="card-container">
+    <!-- Tarjeta 1 -->
+    <div class="card">
+      <img src="assets/nit.png" alt="NIT Primera Vez" />
+      <div class="info">
+        <h4>NIT PRIMERA VEZ</h4>
+        <p>Descripción breve del servicio que ofrece la empresa.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="card">
+      <img src="assets/virtual.png" alt="Solicitud de Agencia Virtual" />
+      <div class="info">
+        <h4>SOLICITUD DE AGENCIA VIRTUAL</h4>
+        <p>Descripción breve del servicio que ofrece la empresa.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="card">
+      <img src="assets/rtu.png" alt="Impresión de RTU" />
+      <div class="info">
+        <h4>IMPRESIÓN DE RTU</h4>
+        <p>Descripción breve del servicio que ofrece la empresa.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 4 -->
+    <div class="card">
+      <img src="assets/update.png" alt="Actualización de Datos" />
+      <div class="info">
+        <h4>ACTUALIZACIÓN DE DATOS</h4>
+        <p>Actualización de información para mantener los registros al día.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 5 -->
+    <div class="card">
+      <img src="assets/factura.png" alt="Consulta de Facturas" />
+      <div class="info">
+        <h4>CONSULTA DE FACTURAS</h4>
+        <p>Consulta y obtención de facturas relacionadas con tu cuenta.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 6 -->
+    <div class="card">
+      <img src="assets/asesoria.png" alt="Asesoría Personalizada" />
+      <div class="info">
+        <h4>ASESORÍA PERSONALIZADA</h4>
+        <p>Servicio de asesoría para resolver dudas y optimizar procesos.</p>
+      </div>
+    </div>
+  </div>
+</div>

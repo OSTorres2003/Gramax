@@ -1,0 +1,220 @@
+/* Fondo con imagen */
+.background-admin {
+  background: url('/assets/administrador.png') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Estilo para los encabezados y párrafos sobre el fondo */
+.background-admin h1,
+.background-admin p {
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para mejorar legibilidad */
+  color: white;
+}
+
+/* Card styling */
+.custom-card {
+  width: 100%;
+  max-width: 1400px;
+  border-radius: 15px;
+  border: none;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo translúcido */
+  overflow-x: auto; /* Agregado para desplazamiento horizontal si es necesario */
+}
+
+/* Header styling */
+.custom-header {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+}
+
+/* Button styling */
+.custom-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+.custom-button .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+/* Table styling */
+.table-responsive {
+  margin-top: 15px;
+  overflow-x: auto; /* Habilita desplazamiento horizontal */
+}
+
+.table {
+  width: 100%; /* Hace que la tabla ocupe todo el ancho */
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+  white-space: nowrap; /* Evita que el texto se desborde */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Bordes suaves */
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+  position: sticky;
+  top: 0; /* Mantiene los encabezados fijos al hacer scroll */
+  z-index: 1;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(248, 249, 250, 0.8); /* Fondo claro translúcido */
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: rgba(33, 37, 41, 0.8); /* Fondo translúcido */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.modal-content form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.modal-content form .form-control {
+  margin-bottom: 15px;
+}
+
+.modal-content .btn {
+  width: 48%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.2rem;
+  }
+
+  .table th, .table td {
+    font-size: 0.9rem;
+    white-space: normal; /* Permitir que el texto envuelva en lugar de cortar */
+  }
+
+  .custom-card {
+    padding: 10px; /* Añadir espacio interno */
+  }
+}
+
+@media (max-width: 576px) {
+  .table th, .table td {
+    font-size: 0.8rem;
+  }
+
+  .logout-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

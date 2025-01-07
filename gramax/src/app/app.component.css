@@ -1,0 +1,85 @@
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura de pantalla completa */
+    background-color: #f5f5f5; /* Fondo gris claro */
+  }
+  
+  /* Tarjeta de Login */
+  .login-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 350px;
+    text-align: center;
+  }
+  
+  /* Logo */
+  .logo img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Título y subtítulo */
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: #888888;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Inputs */
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .input-group input:focus {
+    border-color: #ff4b4b;
+    box-shadow: 0 0 3px #ff4b4b;
+  }
+  
+  /* Botón */
+  button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #e63939;
+  }
+  
+  /* Enlace inferior */
+  p a {
+    color: #ff4b4b;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  

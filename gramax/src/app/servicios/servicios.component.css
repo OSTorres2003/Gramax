@@ -1,0 +1,107 @@
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand .logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.navbar-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.background-gradient {
+  background: url('/assets/servici.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  padding: 40px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.card {
+  position: relative;
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.card .info {
+  padding: 20px;
+}
+
+.card .info h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.card .info p {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.card .tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.card .gradient-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff80, #0075ff, #8000ff);
+  background-size: 300%;
+  border-radius: 15px;
+  animation: borderAnimation 3s infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

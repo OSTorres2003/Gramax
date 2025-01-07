@@ -1,0 +1,60 @@
+.navbar-brand .logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Fondo con degradado */
+.background-gradient {
+background: linear-gradient(to right, #ff7eb3, #ff758c, #f7b42c, #2ad3ff);
+height: 100%;
+width: 100%;
+}
+
+/* Estilo para la card */
+.gradient-card {
+background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
+border-radius: 15px;
+padding: 20px;
+color: #333;
+box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los textos */
+.card-header h3 {
+color: #333;
+font-weight: bold;
+}
+
+.card-body p {
+color: #555;
+font-size: 1.1rem;
+margin-bottom: 10px;
+}
+
+/* Animación suave */
+.gradient-card:hover {
+transform: scale(1.02);
+transition: transform 0.3s ease-in-out;
+}
+
+.navbar .greeting {
+font-size: 1.2rem;
+background-color: rgba(255, 255, 255, 0.1);
+padding: 0.5rem 1rem;
+border-radius: 0.5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .greeting span {
+color: #f8f9fa;
+}
+
+
+
