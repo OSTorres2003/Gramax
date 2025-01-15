@@ -4,21 +4,10 @@
       <div class="navbar-left">
         <img src="assets/logo.png" alt="Logo" class="logo" />
         <span class="navbar-title">SERVICIOS GRAMAX</span>
-      </div>
+      </div><!-- Saludo al cliente -->
       <div class="navbar-right">
-        <!-- Botones adicionales -->
-        <button
-          class="btn btn-info me-2"
-          (click)="navigateTo('mantenimiento')"
-        >
-          Mantenimiento
-        </button>
-        <button
-          class="btn btn-success me-2"
-          (click)="navigateTo('reporte')"
-        >
-          Reporte
-        </button>
+      <!--<button class="btn btn-info me-2" (click)="navigateTo('mantenimiento')">Mantenimiento</button>-->
+       <!-- <button class="btn btn-success me-2" (click)="navigateTo('reporte')">Reporte</button>-->
         <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
       </div>
     </div>
@@ -26,25 +15,21 @@
 
   <div class="container mt-5 d-flex justify-content-center">
     <div class="card custom-card shadow-lg">
-      <!-- Encabezado de la Card -->
       <div class="card-header custom-header text-center">
         <h2 class="m-0">Gestión de Usuarios</h2>
       </div>
 
-      <!-- Cuerpo de la Card -->
       <div class="card-body">
-        <!-- Barra de búsqueda -->
         <div class="mb-4">
           <input
             type="text"
             class="form-control"
-            placeholder="Buscar usuario por correo, NIT o DPI..."
+            placeholder="Buscar usuario por correo, NIT, DPI o Trámite..."
             [(ngModel)]="searchTerm"
             (input)="filterUsers()"
           />
         </div>
 
-        <!-- Botón para abrir el modal -->
         <div class="d-flex justify-content-end mb-4">
           <button
             class="btn btn-primary d-flex align-items-center custom-button"
@@ -55,7 +40,6 @@
           </button>
         </div>
 
-        <!-- Tabla de usuarios -->
         <div class="table-responsive">
           <table class="table table-striped table-hover text-center align-middle">
             <thead class="table-dark">
@@ -68,6 +52,7 @@
                 <th>CORREO SAT</th>
                 <th>NIT</th>
                 <th>DPI</th>
+                <th>TRÁMITE</th>
                 <th>ACCIONES</th>
               </tr>
             </thead>
@@ -81,6 +66,7 @@
                 <td>{{ user.correo_sat }}</td>
                 <td>{{ user.nit }}</td>
                 <td>{{ user.dpi }}</td>
+                <td>{{ user.tramite }}</td>
                 <td>
                   <button
                     class="btn btn-warning btn-sm me-2"
@@ -109,7 +95,6 @@
     </div>
   </div>
 
-  <!-- Modal para crear/editar usuario -->
   <div *ngIf="showNewUserModal" class="modal">
     <div class="modal-content">
       <h3>{{ userIdToEdit ? 'Editar Usuario' : 'Crear Nuevo Usuario' }}</h3>
@@ -120,23 +105,85 @@
           <option value="cliente">Cliente</option>
         </select>
 
+        <label>Trámite:</label>
+<select
+  [(ngModel)]="tramite"
+  name="tramite"
+  class="form-control"
+  required
+>
+  <option value="nit">NIT</option>
+  <option value="agencia virtual">Agencia Virtual</option>
+</select>
+
         <label>Correo Electrónico:</label>
         <input [(ngModel)]="email" name="email" type="email" class="form-control" required />
 
         <label>Contraseña Correo:</label>
-        <input [(ngModel)]="passwordCorreo" name="passwordCorreo" type="password" class="form-control" />
+        <div class="input-group mb-3">
+          <input
+            [(ngModel)]="passwordCorreo"
+            name="passwordCorreo"
+            [type]="showPasswordCorreo ? 'text' : 'password'"
+            class="form-control"
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="togglePassword('passwordCorreo')"
+          >
+            {{ showPasswordCorreo ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
 
         <label>Contraseña SAT:</label>
-        <input [(ngModel)]="passwordSAT" name="passwordSAT" type="password" class="form-control" />
+        <div class="input-group mb-3">
+          <input
+            [(ngModel)]="passwordSAT"
+            name="passwordSAT"
+            [type]="showPasswordSAT ? 'text' : 'password'"
+            class="form-control"
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="togglePassword('passwordSAT')"
+          >
+            {{ showPasswordSAT ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
 
         <label>Contraseña:</label>
-        <input [(ngModel)]="password" name="password" type="password" class="form-control" required />
+        <div class="input-group mb-3">
+          <input
+            [(ngModel)]="password"
+            name="password"
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            required
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="togglePassword('password')"
+          >
+            {{ showPassword ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
 
         <label>Correo SAT:</label>
         <input [(ngModel)]="correoSat" name="correoSat" type="email" class="form-control" />
 
         <label>NIT:</label>
-        <input [(ngModel)]="nit" name="nit" type="text" class="form-control" required />
+        <input
+          [(ngModel)]="nit"
+          name="nit"
+          type="text"
+          class="form-control"
+          [required]="tramite === 'agencia virtual'"
+          minlength="8"
+          maxlength="8"
+        />
 
         <label>DPI:</label>
         <input

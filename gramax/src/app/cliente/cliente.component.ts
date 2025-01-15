@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { jsPDF } from 'jspdf'; // Importa jsPDF
+import autoTable from 'jspdf-autotable'; // Importa autoTable
 
 @Component({
   selector: 'app-cliente',
@@ -58,29 +59,54 @@ export class ClienteComponent implements OnInit {
     }
 
     const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text('Detalles del Cliente', 10, 10);
 
-    const yStart = 20; // Coordenada Y inicial
-    const lineHeight = 10; // Altura entre líneas
-    let currentY = yStart;
+    // Encabezado con el logo y título
+    const logoPath = 'assets/logo.png'; // Ruta del logo
+    const img = new Image();
+    img.src = logoPath;
 
-    // Datos del cliente
-    const data = [
-      `Correo Electrónico: ${this.userData.correo_electronico || 'N/A'}`,
-      `Contraseña Correo: ${this.userData.contrasena_original || 'N/A'}`,
-      `Correo SAT: ${this.userData.correo_sat || 'N/A'}`,
-      `DPI: ${this.userData.dpi || 'N/A'}`,
-      `Contraseña SAT: ${this.userData.contrasena_sat || 'N/A'}`,
-    ];
+    img.onload = () => {
+      // Agregar la imagen del logo
+      doc.addImage(img, 'PNG', 10, 10, 30, 30);
 
-    data.forEach((line) => {
-      doc.text(line, 10, currentY);
-      currentY += lineHeight; // Incrementa la posición Y
-    });
+      // Agregar título
+      doc.setFontSize(18);
+      doc.setTextColor(40, 40, 40);
+      doc.text('Servicios Gramax', 105, 20, { align: 'center' });
+      doc.text('Tel:56266111', 105, 10, { align: 'center' });
 
-    // Descargar el PDF
-    doc.save('Detalles_Cliente.pdf');
+      // Línea separadora
+      doc.setDrawColor(0, 0, 0);
+      doc.line(10, 40, 200, 40);
+
+      // Tabla de datos del cliente
+      const data = [
+        ['Correo Electrónico', this.userData.correo_electronico || 'N/A'],
+        ['Contraseña SAT', this.userData.contrasena_sat || 'N/A'],
+        ['DPI', this.userData.dpi || 'N/A'],
+        ['Contraseña Correo', this.userData.contrasena_correo || 'N/A'],
+        ['Correo SAT', this.userData.correo_sat || 'N/A'],
+      ];
+
+      autoTable(doc, {
+        head: [['Campo', 'Valor']],
+        body: data,
+        startY: 50,
+        theme: 'grid',
+      });
+
+      // Pie de página con el número de página
+      const pageCount = doc.internal.pages.length - 1; // Total de páginas generadas
+      doc.setFontSize(10);
+      doc.text(`Página ${pageCount}`, 105, 290, { align: 'center' });
+
+      // Guardar el PDF
+      doc.save('Detalles_Cliente.pdf');
+    };
+
+    img.onerror = () => {
+      console.error('No se pudo cargar la imagen del logo.');
+    };
   }
 
   // Navegación a diferentes rutas

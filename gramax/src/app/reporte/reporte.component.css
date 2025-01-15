@@ -1,0 +1,18 @@
+.report-container {
+    padding: 20px;
+  }
+  
+  .charts-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .chart {
+    width: 45%;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  

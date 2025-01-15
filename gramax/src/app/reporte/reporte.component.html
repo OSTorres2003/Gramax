@@ -1,1 +1,32 @@
-<p>reporte works!</p>
+<div class="report-container">
+    <h1 class="text-center">Reporte de Trámites</h1>
+  
+    <div class="charts-container">
+      <div class="chart">
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  
+    <div class="table-container">
+      <table class="table table-striped table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Semana</th>
+            <th>NIT</th>
+            <th>Agencia Virtual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of weeklyData">
+            <td>{{ data.week }}</td>
+            <td>{{ data.nit }}</td>
+            <td>{{ data.agencia }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
